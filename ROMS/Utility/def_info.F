@@ -3653,10 +3653,10 @@
       IF (exit_flag.eq.NoError) THEN
 #  ifdef HDF5
         status=PIO_put_att(pioFile, PIO_global, 'format',               &
-     &                     'netCDF-4/HDF5 file')
+     &                     'PIO netCDF-4/HDF5 file')
 #  else
         status=PIO_put_att(pioFile, PIO_global, 'format',               &
-     &                     'netCDF-3 64bit offset file')
+     &                     'PIO netCDF-3 64bit offset file')
 #  endif
         IF (FoundError(status, PIO_noerr, __LINE__, MyFile)) THEN
           IF (Master) WRITE (stdout,20) 'format', TRIM(ncname)
