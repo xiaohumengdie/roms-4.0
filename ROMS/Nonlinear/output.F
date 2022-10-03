@@ -165,12 +165,12 @@
             END IF
             Fcount=HIS(ng)%load
             HIS(ng)%Nrec(Fcount)=0
-            IF (Master) THEN
+!            IF (Master) THEN
               WRITE (HIS(ng)%name,20) TRIM(HIS(ng)%base), ifile
-            END IF
-# ifdef DISTRIBUTE
-            CALL mp_bcasts (ng, iNLM, HIS(ng)%name)
-# endif
+!            END IF
+!# ifdef DISTRIBUTE
+!            CALL mp_bcasts (ng, iNLM, HIS(ng)%name)
+!# endif
             HIS(ng)%files(Fcount)=TRIM(HIS(ng)%name)
             CALL close_file (ng, iNLM, HIS(ng), HIS(ng)%name)
             CALL def_his (ng, NewFile)
@@ -264,12 +264,12 @@
             END IF
             Fcount=QCK(ng)%load
             QCK(ng)%Nrec(Fcount)=0
-            IF (Master) THEN
+!            IF (Master) THEN
               WRITE (QCK(ng)%name,20) TRIM(QCK(ng)%base), ifile
-            END IF
-# ifdef DISTRIBUTE
-            CALL mp_bcasts (ng, iNLM, QCK(ng)%name)
-# endif
+!            END IF
+!# ifdef DISTRIBUTE
+!            CALL mp_bcasts (ng, iNLM, QCK(ng)%name)
+!# endif
             QCK(ng)%files(Fcount)=TRIM(QCK(ng)%name)
             CALL close_file (ng, iNLM, QCK(ng), QCK(ng)%name)
             CALL def_quick (ng, NewFile)
@@ -371,12 +371,12 @@
             END IF
             Fcount=AVG(ng)%load
             AVG(ng)%Nrec(Fcount)=0
-            IF (Master) THEN
+!            IF (Master) THEN
               WRITE (AVG(ng)%name,20) TRIM(AVG(ng)%base), ifile
-            END IF
-#  ifdef DISTRIBUTE
-            CALL mp_bcasts (ng, iNLM, AVG(ng)%name)
-#  endif
+!            END IF
+!#  ifdef DISTRIBUTE
+!            CALL mp_bcasts (ng, iNLM, AVG(ng)%name)
+!#  endif
             AVG(ng)%files(Fcount)=TRIM(AVG(ng)%name)
             CALL close_file (ng, iNLM, AVG(ng), AVG(ng)%name)
             CALL def_avg (ng, Newfile)
@@ -470,12 +470,12 @@
             END IF
             Fcount=DIA(ng)%load
             DIA(ng)%Nrec(Fcount)=0
-            IF (Master) THEN
+!            IF (Master) THEN
               WRITE (DIA(ng)%name,20) TRIM(DIA(ng)%base), ifile
-            END IF
-#  ifdef DISTRIBUTE
-            CALL mp_bcasts (ng, iNLM, DIA(ng)%name)
-#  endif
+!            END IF
+!#  ifdef DISTRIBUTE
+!            CALL mp_bcasts (ng, iNLM, DIA(ng)%name)
+!#  endif
             DIA(ng)%files(Fcount)=TRIM(DIA(ng)%name)
             CALL close_file (ng, iNLM, DIA(ng), DIA(ng)%name)
             CALL def_diags (ng, Newfile)
