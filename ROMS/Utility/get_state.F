@@ -125,6 +125,7 @@
       LBj=BOUNDS(ng)%LBj(tile)
       UBj=BOUNDS(ng)%UBj(tile)
 !
+      S%IOtype = io_nf90 ! Convert IOtype to io_nf90,due to io_pio is wrong 
       SELECT CASE (S%IOtype)
         CASE (io_nf90)
           CALL get_state_nf90 (ng, model, msg, S, IniRec, Tindex,       &

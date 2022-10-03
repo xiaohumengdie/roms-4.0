@@ -179,7 +179,7 @@
       Jstr=BOUNDS(ng)%Jstr(tile)
       Jend=BOUNDS(ng)%Jend(tile)
 !
-!  Set switch to process boundary data by their associated tiles.
+!  Set switch to process boundary data by their allocated tiles.
 !
       bounded(iwest )=DOMAIN(ng)%Western_Edge (tile)
       bounded(ieast )=DOMAIN(ng)%Eastern_Edge (tile)
@@ -391,7 +391,7 @@
       Jstr=BOUNDS(ng)%Jstr(tile)
       Jend=BOUNDS(ng)%Jend(tile)
 !
-!  Set switch to process boundary data by their associated tiles.
+!  Set switch to process boundary data by their allocated tiles.
 !
       bounded(iwest )=DOMAIN(ng)%Western_Edge (tile)
       bounded(ieast )=DOMAIN(ng)%Eastern_Edge (tile)

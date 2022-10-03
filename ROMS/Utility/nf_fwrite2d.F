@@ -649,7 +649,7 @@
 !
       logical :: LandFill, Lminmax
 
-      logical,  pointer :: Lwater(:,:)
+      logical,  allocatable :: Lwater(:,:)
 !
       integer :: i, j
       integer :: Imin, Imax, Jmin, Jmax
@@ -660,8 +660,8 @@
 !
       real(r8), dimension(2) :: rbuffer
 
-      real(r4), pointer :: Awrk4(:,:)
-      real(r8), pointer :: Awrk8(:,:)
+      real(r4), allocatable :: Awrk4(:,:)
+      real(r8), allocatable :: Awrk8(:,:)
 !
       character (len= 3), dimension(2) :: op_handle
 !
@@ -700,7 +700,7 @@
 !
       IF (PRESENT(MinValue)) THEN
         Lminmax=.TRUE.
-        IF (.not.associated(Lwater)) THEN
+        IF (.not.allocated(Lwater)) THEN
            allocate ( Lwater(LBi:UBi,LBj:UBj) )
            Lwater=.TRUE.
         END IF
@@ -727,7 +727,7 @@
 !  writing. Overwrite masked points with special value.
 !
       IF (dkind.eq.PIO_double) THEN                 ! double precision
-        IF (.not.associated(Awrk8)) THEN
+        IF (.not.allocated(Awrk8)) THEN
           allocate ( Awrk8(LBi:UBi,LBj:UBj) )
           Awrk8=0.0_r8
         END IF
@@ -748,7 +748,7 @@
           rbuffer(2)=MAXVAL(Awrk8, MASK=Lwater)
         END IF
       ELSE                                          ! single precision
-        IF (.not.associated(Awrk4)) THEN
+        IF (.not.allocated(Awrk4)) THEN
           allocate ( Awrk4(LBi:UBi,LBj:UBj) )
           Awrk4=0.0_r4
         END IF
@@ -805,15 +805,15 @@
         CALL mp_reduce (ng, model, 2, rbuffer, op_handle)
         MinValue=rbuffer(1)
         MaxValue=rbuffer(2)
-        IF (associated(Lwater)) deallocate (Lwater)
+        IF (allocated(Lwater)) deallocate (Lwater)
       END IF
 !
 !  Deallocate local array.
 !
       IF (dkind.eq.PIO_double) THEN
-        IF (associated(Awrk8)) deallocate (Awrk8)
+        IF (allocated(Awrk8)) deallocate (Awrk8)
       ELSE
-        IF (associated(Awrk4)) deallocate (Awrk4)
+        IF (allocated(Awrk4)) deallocate (Awrk4)
       END IF
 !
       RETURN

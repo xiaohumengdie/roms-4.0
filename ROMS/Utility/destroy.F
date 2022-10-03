@@ -8,7 +8,7 @@
 !    See License_ROMS.txt                                              !
 !=======================================================================
 !                                                                      !
-!  It releases the space allocated for pointer variable in ROMS        !
+!  It releases the space allocated for allocatable variable in ROMS        !
 !  kernel structures. After a variable has been deallocated, it        !
 !  cannot be defined or referenced until it is allocated or            !
 !  assigned again.                                                     !
@@ -64,7 +64,7 @@
 !
       integer, intent(in) :: ng, line
 
-      integer, pointer, intent(inout) :: Varray(:)
+      integer, allocatable, intent(inout) :: Varray(:)
 !
       character (len=*) :: Vstring, routine
 !
@@ -84,11 +84,11 @@
       Derror=0
 !
 #ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 #else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 #endif
@@ -116,7 +116,7 @@
 !
 !  Imported variable declarations.
 !
-      logical, pointer, intent(inout) :: Varray(:)
+      logical, allocatable, intent(inout) :: Varray(:)
 !
       integer, intent(in) :: ng, line
 !
@@ -138,11 +138,11 @@
       Derror=0
 !
 #ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 #else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 #endif
@@ -172,7 +172,7 @@
 !
       integer, intent(in) :: ng, line
 !
-      real(r8), pointer, intent(inout) :: Varray(:)
+      real(r8), allocatable, intent(inout) :: Varray(:)
 !
       character (len=*) :: Vstring, routine
 !
@@ -192,11 +192,11 @@
       Derror=0
 !
 #ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 #else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 #endif
@@ -226,7 +226,7 @@
 !
       integer, intent(in) :: ng, line
 !
-      real(r8), pointer, intent(inout) :: Varray(:,:)
+      real(r8), allocatable, intent(inout) :: Varray(:,:)
 !
       character (len=*) :: Vstring, routine
 !
@@ -246,11 +246,11 @@
       Derror=0
 !
 #ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 #else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 #endif
@@ -280,7 +280,7 @@
 !
       integer, intent(in) :: ng, line
 !
-      real(r8), pointer, intent(inout) :: Varray(:,:,:)
+      real(r8), allocatable, intent(inout) :: Varray(:,:,:)
 !
       character (len=*) :: Vstring, routine
 !
@@ -300,11 +300,11 @@
       Derror=0
 !
 #ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 #else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 #endif
@@ -334,7 +334,7 @@
 !
       integer, intent(in) :: ng, line
 !
-      real(r8), pointer, intent(inout) :: Varray(:,:,:,:)
+      real(r8), allocatable, intent(inout) :: Varray(:,:,:,:)
 !
       character (len=*) :: Vstring, routine
 !
@@ -354,11 +354,11 @@
       Derror=0
 !
 #ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 #else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 #endif
@@ -388,7 +388,7 @@
 !
       integer, intent(in) :: ng, line
 !
-      real(r8), pointer, intent(inout) :: Varray(:,:,:,:,:)
+      real(r8), allocatable, intent(inout) :: Varray(:,:,:,:,:)
 !
       character (len=*) :: Vstring, routine
 !
@@ -408,11 +408,11 @@
       Derror=0
 !
 #ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 #else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 #endif
@@ -444,7 +444,7 @@
 !
       integer, intent(in) :: ng, line
 !
-      real(dp), pointer, intent(inout) :: Varray(:)
+      real(dp), allocatable, intent(inout) :: Varray(:)
 !
       character (len=*) :: Vstring, routine
 !
@@ -464,11 +464,11 @@
       Derror=0
 !
 # ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 # else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 # endif
@@ -498,7 +498,7 @@
 !
       integer, intent(in) :: ng, line
 !
-      real(dp), pointer, intent(inout) :: Varray(:,:)
+      real(dp), allocatable, intent(inout) :: Varray(:,:)
 !
       character (len=*) :: Vstring, routine
 !
@@ -518,11 +518,11 @@
       Derror=0
 !
 # ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 # else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 # endif
@@ -552,7 +552,7 @@
 !
       integer, intent(in) :: ng, line
 !
-      real(dp), pointer, intent(inout) :: Varray(:,:,:)
+      real(dp), allocatable, intent(inout) :: Varray(:,:,:)
 !
       character (len=*) :: Vstring, routine
 !
@@ -572,11 +572,11 @@
       Derror=0
 !
 # ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 # else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 # endif
@@ -606,7 +606,7 @@
 !
       integer, intent(in) :: ng, line
 !
-      real(dp), pointer, intent(inout) :: Varray(:,:,:,:)
+      real(dp), allocatable, intent(inout) :: Varray(:,:,:,:)
 !
       character (len=*) :: Vstring, routine
 !
@@ -626,11 +626,11 @@
       Derror=0
 !
 # ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 # else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 # endif
@@ -660,7 +660,7 @@
 !
       integer, intent(in) :: ng, line
 !
-      real(dp), pointer, intent(inout) :: Varray(:,:,:,:,:)
+      real(dp), allocatable, intent(inout) :: Varray(:,:,:,:,:)
 !
       character (len=*) :: Vstring, routine
 !
@@ -680,11 +680,11 @@
       Derror=0
 !
 # ifdef DISTRIBUTE
-      IF (associated(Varray))                                           &
+      IF (allocated(Varray))                                           &
      &  deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
 # else
       IF (Master) THEN
-        IF (associated(Varray))                                         &
+        IF (allocated(Varray))                                         &
      &    deallocate ( Varray, ERRMSG = Dmsg, STAT = Derror )
       END IF
 # endif

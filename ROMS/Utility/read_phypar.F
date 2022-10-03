@@ -6360,7 +6360,7 @@
             WRITE (out,120) out_lib, 'out_lib',                         &
      &            'Using standard NetCDF library for output files.'
 #if defined PIO_LIB && defined DISTRIBUTE
-          ELSE IF (inp_lib.eq.io_pio) THEN
+          ELSE IF (out_lib.eq.io_pio) THEN
             WRITE (out,120) out_lib, 'out_lib',                         &
      &            'Using Parallel-IO (PIO) library for output files.'
 #endif

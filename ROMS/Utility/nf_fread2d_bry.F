@@ -122,7 +122,7 @@
 !
       real(r8) :: Afactor, Aoffset, Aspval
 !
-      real(r8), pointer :: Cwrk(:)               ! used for checksum
+      real(r8), allocatable :: Cwrk(:)               ! used for checksum
 
       real(r8), dimension(3) :: AttValue
 
@@ -194,7 +194,7 @@
       Jstr=BOUNDS(ng)%Jstr (tile)
       Jend=BOUNDS(ng)%Jend (tile)
 !
-!  Set switch to process boundary data by their associated tiles.
+!  Set switch to process boundary data by their allocated tiles.
 !
       bounded(iwest )=DOMAIN(ng)%Western_Edge(tile)
       bounded(ieast )=DOMAIN(ng)%Eastern_Edge(tile)
@@ -296,10 +296,10 @@
 !
           IF (Lchecksum) THEN
             Npts=(UBij-LBij+1)*Nrec*4
-            IF (.not.associated(Cwrk)) allocate ( Cwrk(Npts) )
+            IF (.not.allocated(Cwrk)) allocate ( Cwrk(Npts) )
             Cwrk=PACK(wrk(LBij:UBij, 1:4, 1:Nrec), .TRUE.)
             CALL get_hash (Cwrk, Npts, checksum)
-            IF (associated(Cwrk)) deallocate (Cwrk)
+            IF (allocated(Cwrk)) deallocate (Cwrk)
           END IF
         END IF
       END IF
@@ -406,7 +406,7 @@
 !
       real(r8) :: Afactor, Aoffset, Aspval
 !
-      real(r8), pointer :: Cwrk(:)               ! used for checksum
+      real(r8), allocatable :: Cwrk(:)               ! used for checksum
 
       real(r8), dimension(3) :: AttValue
 
@@ -469,7 +469,7 @@
       Jstr=BOUNDS(ng)%Jstr(tile)
       Jend=BOUNDS(ng)%Jend(tile)
 !
-!  Set switch to process boundary data by their associated tiles.
+!  Set switch to process boundary data by their allocated tiles.
 !
       bounded(iwest )=DOMAIN(ng)%Western_Edge(tile)
       bounded(ieast )=DOMAIN(ng)%Eastern_Edge(tile)
@@ -571,10 +571,10 @@
 !
         IF (Lchecksum) THEN
           Npts=(UBij-LBij+1)*Nrec*4
-          IF (.not.associated(Cwrk)) allocate ( Cwrk(Npts) )
+          IF (.not.allocated(Cwrk)) allocate ( Cwrk(Npts) )
           Cwrk=PACK(wrk(LBij:UBij, 1:4, 1:Nrec), .TRUE.)
           CALL get_hash (Cwrk, Npts, checksum)
-          IF (associated(Cwrk)) deallocate (Cwrk)
+          IF (allocated(Cwrk)) deallocate (Cwrk)
         END IF
       END IF
 !
