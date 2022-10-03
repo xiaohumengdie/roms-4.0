@@ -156,13 +156,15 @@ endif
           LDFLAGS := $(FFLAGS)
 
 ifdef USE_PIO
-       PIO_INCDIR ?= /opt/intelsoft/openmpi/pio/include
-       PIO_LIBDIR ?= /opt/intelsoft/openmpi/pio/lib
+          PIO_DIR ?= /home/cesm01/software/coawst/scorpio-v1.3.2
+       PIO_INCDIR ?= $(PIO_DIR)/include
+       PIO_LIBDIR ?= $(PIO_DIR)/lib
            FFLAGS += -I$(PIO_INCDIR)
              LIBS += -L$(PIO_LIBDIR) -lpiof -lpioc
 
-   PNETCDF_INCDIR ?= /opt/intelsoft/openmpi/pnetcdf/include
-   PNETCDF_LIBDIR ?= /opt/intelsoft/openmpi/pnetcdf/lib
+      PNETCDF_DIR ?= /home/cesm01/software/coawst/pnetcdf1.12.1
+   PNETCDF_INCDIR ?= $(PNETCDF_DIR)/include
+   PNETCDF_LIBDIR ?= $(PNETCDF_DIR)/lib
            FFLAGS += -I$(PNETCDF_INCDIR)
              LIBS += -L$(PNETCDF_LIBDIR) -lpnetcdf
 endif
@@ -221,7 +223,7 @@ ifdef USE_MPI
              LIBS += -lfmpi -lmpi
  endif
 endif
-
+LIBS += -lstdc++
 ifdef USE_OpenMP
          CPPFLAGS += -D_OPENMP
            FFLAGS += -qopenmp -fpp
@@ -234,6 +236,7 @@ ifdef USE_MCT
              LIBS += -L$(MCT_LIBDIR) -lmct -lmpeu
            INCDIR += $(MCT_INCDIR) $(INCDIR)
 endif
+
 
 ifdef USE_ESMF
           ESMF_OS ?= $(OS)
